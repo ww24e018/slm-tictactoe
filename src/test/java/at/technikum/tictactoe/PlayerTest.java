@@ -26,4 +26,9 @@ class PlayerTest {
         assertEquals('✗', new Player('✗').getMarker());
     }
 
+    @Test
+    public void playerInstanceShouldNeverReturnZeroCodepoint() {
+        var ZeroValueChar = (new char[1])[0]; // similar syntax as code in Board.class constructor
+        assertNotEquals(0, new Player(ZeroValueChar).getMarker());
+    }
 }
