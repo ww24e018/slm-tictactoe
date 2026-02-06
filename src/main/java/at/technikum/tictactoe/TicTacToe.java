@@ -33,4 +33,9 @@ public class TicTacToe {
     private boolean hasWinner() {
         throw new RuntimeException("not implemented yet. reserved for #3");
     }
+
+
+    public static void main(String[] args) {
+        new TicTacToe().start();
+    }
 }
