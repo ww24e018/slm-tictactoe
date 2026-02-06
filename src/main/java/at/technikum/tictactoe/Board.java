@@ -21,8 +21,8 @@ public class Board {
 
     public boolean isFull() {
         boolean nonEmtpyCellFoundYet = false;
-        for (var i = 0; i < 2; i++) {
-            for (var j = 0; j < 2; j++) {
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 3; j++) {
                 nonEmtpyCellFoundYet |= this.isCellEmpty(i,j);
             }
         }
