@@ -1,7 +1,7 @@
 package at.technikum.tictactoe;
 
 public class Player {
-    private final char marker;
+    private char marker;
 
     public Player(char marker) {
         this.marker = marker;
