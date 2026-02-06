@@ -2,6 +2,7 @@ package at.technikum.tictactoe;
 
 public class Board {
 
+    public static final char CHAR_ZERO_REPLACER = '⚡';
     private char[][] cells;
 
     public Board() {
@@ -14,7 +15,7 @@ public class Board {
 
     public void place(int x, int y, char marker) {
         // guard against placing value0-chars
-        char placedMarker = marker==0?'‽':marker;
+        char placedMarker = marker==0? CHAR_ZERO_REPLACER :marker;
         this.cells[x][y] = placedMarker;
     }
 
