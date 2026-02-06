@@ -5,6 +5,7 @@ public class Player {
 
     public Player(char marker) {
         this.marker = marker;
+        if (this.marker == 0) this.marker = '‽'; // board spec requires an 'empty' marker. assuming 0 supposed to be reserved value
     }
 
     public char getMarker() {
