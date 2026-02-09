@@ -6,7 +6,7 @@
 
     <groupId>at.technikum</groupId>
     <artifactId>slm-tic-tac-toe</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>nightly</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
