@@ -20,7 +20,7 @@ public class TicTacToe {
         boolean quitGame = false;
         while (!quitGame) {
             System.out.format("Current Player: %c\n", currentPlayer.getMarker());
-
+            board.print();
             // TODO: player input and acting on it, showing game state
 
             // TODO: checking game-end conditions, dealing with it, asking player, making switchPlayer conditional
