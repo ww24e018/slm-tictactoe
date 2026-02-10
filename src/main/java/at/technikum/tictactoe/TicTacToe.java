@@ -33,6 +33,8 @@ public class TicTacToe {
             // TODO: checking game-end conditions, dealing with it, asking player, making switchPlayer conditional
             this.switchCurrentPlayer();
 
+            System.out.println(this.getResult());
+
             // TODO: next line is terminating placeholder; replace by actual game logic
             //if (this.currentPlayer == this.player1) quitGame = true;
         }
@@ -50,6 +52,11 @@ public class TicTacToe {
 
     private boolean hasWinner() {
         throw new RuntimeException("not implemented yet. reserved for #3");
+    }
+
+    private String getResult(){
+
+        return null;
     }
 
 
