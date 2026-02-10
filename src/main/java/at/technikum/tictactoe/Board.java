@@ -15,22 +15,32 @@ public class Board {
         return this.cells[x][y] == 0; // char represented by unicode codepoint
     }
 
-    public int[] chooseCell() {
+    public int[] chooseCell(Scanner scanner) {
         boolean emptyCellChosen = false;
         int[] chosenCell = new int[2];
 
         while (!emptyCellChosen) {
-            System.out.println("Please place your marker on an empty cell!");
-            System.out.print("row (0-2): ");
-            Scanner scanner = new Scanner(System.in);
-            int x = Integer.parseInt(scanner.nextLine());
-            System.out.print("column (0-2): ");
-            int y = Integer.parseInt(scanner.nextLine());
+            try {
+                System.out.println("Please place your marker on an empty cell!");
+                System.out.print("row (0-2): ");
+                int x = Integer.parseInt(scanner.nextLine());
+                System.out.print("column (0-2): ");
+                int y = Integer.parseInt(scanner.nextLine());
 
-            if (this.isCellEmpty(x, y)) {
-                emptyCellChosen = true;
-                chosenCell[0] = x;
-                chosenCell[1] = y;
+                if (x < 0 || x > 2 || y < 0 || y > 2) {
+                    System.out.println("Error: Coordinates must be between 0 and 2!");
+                    continue;
+                }
+
+                if (this.isCellEmpty(x, y)) {
+                    emptyCellChosen = true;
+                    chosenCell[0] = x;
+                    chosenCell[1] = y;
+                } else {
+                    System.out.println("Error: Cell is occupied! Try again!");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Invalid input! Please enter a number!");
             }
         }
         return chosenCell;

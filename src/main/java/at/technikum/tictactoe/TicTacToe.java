@@ -1,6 +1,8 @@
 package at.technikum.tictactoe;
 
 
+import java.util.Scanner;
+
 public class TicTacToe {
     public static final char PLAYER1MARKER = 'X';
     public static final char PLAYER2MARKER = 'O';
@@ -8,6 +10,7 @@ public class TicTacToe {
     private Player player2;
     private Player currentPlayer;
     private Board board;
+    private Scanner scanner = new Scanner(System.in);
 
     public TicTacToe() {
         this.player1 = new Player(PLAYER1MARKER);
@@ -22,7 +25,7 @@ public class TicTacToe {
             System.out.format("Current Player: %c\n", currentPlayer.getMarker());
             board.print();
 
-            int[] coordinates = board.chooseCell();
+            int[] coordinates = board.chooseCell(scanner);
             board.place(coordinates[0], coordinates[1], currentPlayer.getMarker());
 
 
