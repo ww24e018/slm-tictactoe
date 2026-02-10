@@ -1,6 +1,8 @@
 package at.technikum.tictactoe;
 
 
+import java.util.Scanner;
+
 public class TicTacToe {
     public static final char PLAYER1MARKER = 'X';
     public static final char PLAYER2MARKER = 'O';
@@ -8,6 +10,7 @@ public class TicTacToe {
     private Player player2;
     private Player currentPlayer;
     private Board board;
+    private Scanner scanner = new Scanner(System.in);
 
     public TicTacToe() {
         this.player1 = new Player(PLAYER1MARKER);
@@ -21,13 +24,17 @@ public class TicTacToe {
         while (!quitGame) {
             System.out.format("Current Player: %c\n", currentPlayer.getMarker());
             board.print();
-            // TODO: player input and acting on it, showing game state
+
+            int[] coordinates = board.chooseCell(scanner);
+            board.place(coordinates[0], coordinates[1], currentPlayer.getMarker());
+
+
 
             // TODO: checking game-end conditions, dealing with it, asking player, making switchPlayer conditional
             this.switchCurrentPlayer();
 
             // TODO: next line is terminating placeholder; replace by actual game logic
-            if (this.currentPlayer == this.player1) quitGame = true;
+            //if (this.currentPlayer == this.player1) quitGame = true;
         }
     }
 

@@ -2,6 +2,8 @@ package at.technikum.tictactoe;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
@@ -23,6 +25,27 @@ class BoardTest {
     @Test
     void isEmptyThrowsForOutOfBoundValuesNegative() {
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> new Board().isCellEmpty(-1,-1));
+    }
+
+    @Test
+    void testChooseCellWithInvalidThenValidInput() {
+        Board newBoard = new Board();
+        String simulatedInput = "abc\n5\n5\n1\n1";
+        Scanner testScanner = new Scanner(simulatedInput);
+
+        int[] result = newBoard.chooseCell(testScanner);
+
+        assertArrayEquals(new int[]{1, 1}, result);
+    }
+
+    @Test
+    void testChooseCellWhenChosenCellIsOccupied() {
+        Board newBoard = new Board();
+        newBoard.place(0, 0, 'X');
+        String simulatedInput = "0\n0\n1\n1\n";
+        Scanner testScanner = new Scanner(simulatedInput);
+        int[] result = newBoard.chooseCell(testScanner);
+        assertArrayEquals(new int[]{1, 1}, result);
     }
 
     @Test
