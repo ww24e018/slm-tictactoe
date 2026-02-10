@@ -33,7 +33,22 @@ public class Board {
     }
 
     public void print() {
-        // TODO/reserved for issue #2
+        System.out.println("-------");
+        for (var i = 0; i < 3; i++) {
+            System.out.print("|");
+            for (var j = 0; j < 3; j++) {
+                if (this.isCellEmpty(i,j)) {
+                    System.out.print(" |");
+                } else {
+                    System.out.print(this.cells[i][j]);
+                    System.out.print("|");
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println("-------");
+
     }
 
 }
