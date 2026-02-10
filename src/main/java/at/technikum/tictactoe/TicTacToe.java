@@ -21,13 +21,16 @@ public class TicTacToe {
         while (!quitGame) {
             System.out.format("Current Player: %c\n", currentPlayer.getMarker());
             board.print();
-            // TODO: player input and acting on it, showing game state
+
+            board.place(currentPlayer.getMarker());
+
+
 
             // TODO: checking game-end conditions, dealing with it, asking player, making switchPlayer conditional
             this.switchCurrentPlayer();
 
             // TODO: next line is terminating placeholder; replace by actual game logic
-            if (this.currentPlayer == this.player1) quitGame = true;
+            //if (this.currentPlayer == this.player1) quitGame = true;
         }
     }
 

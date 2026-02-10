@@ -1,5 +1,7 @@
 package at.technikum.tictactoe;
 
+import java.util.Scanner;
+
 public class Board {
 
     public static final char CHAR_ZERO_REPLACER = '⚡';
@@ -13,10 +15,25 @@ public class Board {
         return this.cells[x][y] == 0; // char represented by unicode codepoint
     }
 
-    public void place(int x, int y, char marker) {
+    public void place(char marker) {
         // guard against placing value0-chars
         char placedMarker = marker==0? CHAR_ZERO_REPLACER :marker;
-        this.cells[x][y] = placedMarker;
+
+        boolean markerPlacedSuccessfully = false;
+
+        while (!markerPlacedSuccessfully) {
+            System.out.println("Please place your marker on an empty cell!");
+            System.out.print("row (0-2): ");
+            Scanner scanner = new Scanner(System.in);
+            int x = Integer.parseInt(scanner.nextLine());
+            System.out.print("column (0-2): ");
+            int y = Integer.parseInt(scanner.nextLine());
+
+            if (this.isCellEmpty(x, y)) {
+                this.cells[x][y] = placedMarker;
+                markerPlacedSuccessfully = true;
+            }
+        }
     }
 
     public boolean isFull() {
