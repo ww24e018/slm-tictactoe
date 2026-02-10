@@ -22,7 +22,8 @@ public class TicTacToe {
             System.out.format("Current Player: %c\n", currentPlayer.getMarker());
             board.print();
 
-            board.place(currentPlayer.getMarker());
+            int[] coordinates = board.chooseCell();
+            board.place(coordinates[0], coordinates[1], currentPlayer.getMarker());
 
 
 

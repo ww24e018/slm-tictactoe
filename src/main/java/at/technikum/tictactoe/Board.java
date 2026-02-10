@@ -15,13 +15,11 @@ public class Board {
         return this.cells[x][y] == 0; // char represented by unicode codepoint
     }
 
-    public void place(char marker) {
-        // guard against placing value0-chars
-        char placedMarker = marker==0? CHAR_ZERO_REPLACER :marker;
+    public int[] chooseCell() {
+        boolean emptyCellChosen = false;
+        int[] chosenCell = new int[2];
 
-        boolean markerPlacedSuccessfully = false;
-
-        while (!markerPlacedSuccessfully) {
+        while (!emptyCellChosen) {
             System.out.println("Please place your marker on an empty cell!");
             System.out.print("row (0-2): ");
             Scanner scanner = new Scanner(System.in);
@@ -30,10 +28,22 @@ public class Board {
             int y = Integer.parseInt(scanner.nextLine());
 
             if (this.isCellEmpty(x, y)) {
-                this.cells[x][y] = placedMarker;
-                markerPlacedSuccessfully = true;
+                emptyCellChosen = true;
+                chosenCell[0] = x;
+                chosenCell[1] = y;
             }
         }
+        return chosenCell;
+    }
+
+
+
+    public void place(int x, int y, char marker) {
+        // guard against placing value0-chars
+        char placedMarker = marker==0? CHAR_ZERO_REPLACER :marker;
+
+        this.cells[x][y] = placedMarker;
+
     }
 
     public boolean isFull() {
