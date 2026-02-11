@@ -51,12 +51,26 @@ public class TicTacToe {
     }
 
     private boolean hasWinner() {
-        throw new RuntimeException("not implemented yet. reserved for #3");
+        if(board.isWinner(player1.getMarker()) || board.isWinner(player2.getMarker())){
+            return true;
+        }
+        return false;
     }
 
     private String getResult(){
+        if(!hasWinner() && board.isFull()){
+            return "Game endet in a draw";
+        }
 
-        return null;
+        if(board.isWinner(player1.getMarker())){
+            return "Player 1 (" + player1.getMarker() + ") won!";
+        }
+
+        if(board.isWinner(player2.getMarker())){
+            return "Player 2 (" + player2.getMarker() + ") won!";
+        }
+
+        return "There are still cells to fill.";
     }
 
 
