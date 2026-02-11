@@ -21,13 +21,14 @@ public class TicTacToe {
         this.player1 = new Player(PLAYER1MARKER);
         this.player2 = new Player(PLAYER2MARKER);
         this.currentPlayer = player1;
+        this.board = new Board();
         this.scanner = scanner;
     }
 
     public void start() {
         boolean endGame = false;
         do {
-            this.board = new Board();
+            this.board.clear();
             do {
                 System.out.format("Current Player: %c\n", currentPlayer.getMarker());
                 board.print();
