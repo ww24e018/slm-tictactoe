@@ -97,4 +97,61 @@ class BoardTest {
         assertTrue(newBoard.isCellEmpty(1,1));
     }
 
+    @Test
+    void findWinnerInRow(){
+        Board board = new Board();
+        board.place(2, 0, 'X');
+        board.place(2, 1, 'X');
+        board.place(2, 2, 'X');
+        assertTrue(board.isWinner('X'));
+    }
+
+    @Test
+    void findWinnerInColumn(){
+        Board board = new Board();
+        board.place(0, 2, 'O');
+        board.place(1, 2, 'O');
+        board.place(2, 2, 'O');
+        assertTrue(board.isWinner('O'));
+    }
+
+    @Test
+    void findWinnerIn1stDiagonal(){
+        Board board = new Board();
+        board.place(0, 0, 'O');
+        board.place(1, 1, 'O');
+        board.place(2, 2, 'O');
+        assertTrue(board.isWinner('O'));
+    }
+
+    @Test
+    void findWinnerIn2ndDiagonal(){
+        Board board = new Board();
+        board.place(0, 2, 'O');
+        board.place(1, 1, 'O');
+        board.place(2, 0, 'O');
+
+        assertTrue(board.isWinner('O'));
+    }
+
+    @Test
+    void findWinnerWithDraw(){
+        Board board = new Board();
+        board.place(0, 0, 'O');
+        board.place(0, 1, 'X');
+        board.place(0, 2, 'X');
+
+        board.place(1, 0, 'X');
+        board.place(1, 1, 'O');
+        board.place(1, 2, 'O');
+
+        board.place(2, 0, 'O');
+        board.place(2, 1, 'X');
+        board.place(2, 2, 'X');
+
+        assertFalse(board.isWinner('O'));
+        assertFalse(board.isWinner('X'));
+
+    }
+
 }

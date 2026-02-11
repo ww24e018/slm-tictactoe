@@ -20,22 +20,18 @@ public class TicTacToe {
     }
 
     public void start() {
-        boolean quitGame = false;
-        while (!quitGame) {
+        boolean endGame = false;
+        do {
             System.out.format("Current Player: %c\n", currentPlayer.getMarker());
             board.print();
 
             int[] coordinates = board.chooseCell(scanner);
             board.place(coordinates[0], coordinates[1], currentPlayer.getMarker());
-
-
-
-            // TODO: checking game-end conditions, dealing with it, asking player, making switchPlayer conditional
             this.switchCurrentPlayer();
+            endGame = this.hasWinner() || board.isFull();
 
-            // TODO: next line is terminating placeholder; replace by actual game logic
-            //if (this.currentPlayer == this.player1) quitGame = true;
-        }
+        } while (!endGame);
+        System.out.println(this.getResult());
     }
 
     private void switchCurrentPlayer() {
@@ -49,7 +45,26 @@ public class TicTacToe {
     }
 
     private boolean hasWinner() {
-        throw new RuntimeException("not implemented yet. reserved for #3");
+        if(board.isWinner(player1.getMarker()) || board.isWinner(player2.getMarker())){
+            return true;
+        }
+        return false;
+    }
+
+    private String getResult(){
+        if(!hasWinner() && board.isFull()){
+            return "Game endet in a draw";
+        }
+
+        if(board.isWinner(player1.getMarker())){
+            return "Player 1 (" + player1.getMarker() + ") won!";
+        }
+
+        if(board.isWinner(player2.getMarker())){
+            return "Player 2 (" + player2.getMarker() + ") won!";
+        }
+
+        return "There are still cells to fill.";
     }
 
 
