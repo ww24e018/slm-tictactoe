@@ -1,6 +1,7 @@
 package at.technikum.tictactoe;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -22,16 +23,36 @@ public class TicTacToe {
     public void start() {
         boolean endGame = false;
         do {
-            System.out.format("Current Player: %c\n", currentPlayer.getMarker());
-            board.print();
+            do {
+                System.out.format("Current Player: %c\n", currentPlayer.getMarker());
+                board.print();
 
-            int[] coordinates = board.chooseCell(scanner);
-            board.place(coordinates[0], coordinates[1], currentPlayer.getMarker());
-            this.switchCurrentPlayer();
-            endGame = this.hasWinner() || board.isFull();
+                int[] coordinates = board.chooseCell(scanner);
+                board.place(coordinates[0], coordinates[1], currentPlayer.getMarker());
+                this.switchCurrentPlayer();
+                endGame = this.hasWinner() || board.isFull();
 
-        } while (!endGame);
-        System.out.println(this.getResult());
+            } while (!endGame);
+            System.out.println(this.getResult());
+
+            System.out.println();
+
+        } while(playAgain());
+
+    }
+
+    public boolean playAgain(){
+        System.out.println("Do you want to play agan? Choose by entering true/false");
+        boolean answer = false;
+        while(!scanner.hasNextBoolean()){
+            try {
+                answer = scanner.nextBoolean();
+            } catch (InputMismatchException e){
+                System.out.println("Invalid input. Valid input is true/false");
+            }
+        }
+
+        return answer;
     }
 
     private void switchCurrentPlayer() {
