@@ -112,7 +112,6 @@ class BoardTest {
         board.place(0, 2, 'O');
         board.place(1, 2, 'O');
         board.place(2, 2, 'O');
-        board.print();
         assertTrue(board.isWinner('O'));
     }
 
@@ -131,7 +130,7 @@ class BoardTest {
         board.place(0, 2, 'O');
         board.place(1, 1, 'O');
         board.place(2, 0, 'O');
-        board.print();
+
         assertTrue(board.isWinner('O'));
     }
 
@@ -150,7 +149,6 @@ class BoardTest {
         board.place(2, 1, 'X');
         board.place(2, 2, 'X');
 
-        board.print();
         assertFalse(board.isWinner('O'));
         assertFalse(board.isWinner('X'));
 
