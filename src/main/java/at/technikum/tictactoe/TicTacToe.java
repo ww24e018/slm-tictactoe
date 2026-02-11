@@ -20,24 +20,18 @@ public class TicTacToe {
     }
 
     public void start() {
-        boolean quitGame = false;
-        while (!quitGame) {
+        boolean endGame = false;
+        do {
             System.out.format("Current Player: %c\n", currentPlayer.getMarker());
             board.print();
 
             int[] coordinates = board.chooseCell(scanner);
             board.place(coordinates[0], coordinates[1], currentPlayer.getMarker());
-
-
-
-            // TODO: checking game-end conditions, dealing with it, asking player, making switchPlayer conditional
             this.switchCurrentPlayer();
+            endGame = this.hasWinner() || board.isFull();
 
-            System.out.println(this.getResult());
-
-            // TODO: next line is terminating placeholder; replace by actual game logic
-            //if (this.currentPlayer == this.player1) quitGame = true;
-        }
+        } while (!endGame);
+        System.out.println(this.getResult());
     }
 
     private void switchCurrentPlayer() {
