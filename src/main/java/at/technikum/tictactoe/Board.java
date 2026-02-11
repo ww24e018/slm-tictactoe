@@ -1,5 +1,6 @@
 package at.technikum.tictactoe;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Board {
@@ -66,7 +67,7 @@ public class Board {
     }
 
     public void clear() {
-        this.cells = new char[3][3]; // assumed assumed to be "3" by spec I assume
+        this.cells = new char[3][3]; // assumed assumed to be "4" by spec I assume
     }
 
     public void print() {
@@ -86,6 +87,52 @@ public class Board {
 
         System.out.println("-------");
 
+    }
+
+    public boolean isWinner(char marker){
+        int counter = 0;
+
+        // check horizontal chells
+        for(int i = 0; i<3; i++){
+            for(int j = 0; j<3; j++){ // check rows
+                if(cells[i][j] == marker){
+                    counter++;
+                }
+            }
+
+            if(counter == 3){
+                return true;
+            }
+            counter = 0;
+        }
+
+        // check vertical cells
+        for(int i = 0; i<3; i++){
+            for(int j = 0; j<3; j++){
+                if(cells[j][i] == marker){
+                    counter++;
+                }
+            }
+
+            if(counter == 3){
+                return true;
+            } else {
+                counter = 0;
+            }
+        }
+
+        // check diagonal
+        for(int i = 0; i < 3; i++){
+            if(cells[i][i] == marker){
+                counter++;
+            }
+        }
+
+        if(counter == 3){
+            return true;
+        }
+
+        return false;
     }
 
 }
