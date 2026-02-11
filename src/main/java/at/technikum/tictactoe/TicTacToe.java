@@ -48,7 +48,7 @@ public class TicTacToe {
     }
 
     public boolean playAgain(){
-        System.out.println("Do you want to play agan? Choose by entering yes/no");
+        System.out.println("Do you want to play again? Choose by entering yes/no");
         String answer = scanner.nextLine();
         while(!answer.equals("no") && !answer.equals("yes")){
             System.out.println("Invalid input. Valid input is yes/no");
@@ -78,7 +78,7 @@ public class TicTacToe {
 
     private String getResult(){
         if(!hasWinner() && board.isFull()){
-            return "Game endet in a draw";
+            return "Game ended in a draw";
         }
 
         if(board.isWinner(player1.getMarker())){
