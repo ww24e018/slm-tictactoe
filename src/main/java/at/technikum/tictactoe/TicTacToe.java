@@ -11,18 +11,23 @@ public class TicTacToe {
     private Player player2;
     private Player currentPlayer;
     private Board board;
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
 
     public TicTacToe() {
+        this(new Scanner(System.in));
+    }
+
+    public TicTacToe(Scanner scanner) {
         this.player1 = new Player(PLAYER1MARKER);
         this.player2 = new Player(PLAYER2MARKER);
         this.currentPlayer = player1;
-        this.board = new Board();
+        this.scanner = scanner;
     }
 
     public void start() {
         boolean endGame = false;
         do {
+            this.board = new Board();
             do {
                 System.out.format("Current Player: %c\n", currentPlayer.getMarker());
                 board.print();
@@ -34,7 +39,7 @@ public class TicTacToe {
 
             } while (!endGame);
             System.out.println(this.getResult());
-
+            board.print();
             System.out.println();
 
         } while(playAgain());
@@ -42,17 +47,15 @@ public class TicTacToe {
     }
 
     public boolean playAgain(){
-        System.out.println("Do you want to play agan? Choose by entering true/false");
-        boolean answer = false;
-        while(!scanner.hasNextBoolean()){
-            try {
-                answer = scanner.nextBoolean();
-            } catch (InputMismatchException e){
-                System.out.println("Invalid input. Valid input is true/false");
-            }
+        System.out.println("Do you want to play agan? Choose by entering yes/no");
+        String answer = scanner.nextLine();
+        while(!answer.equals("no") && !answer.equals("yes")){
+            System.out.println("Invalid input. Valid input is yes/no");
+            answer = scanner.nextLine();
         }
 
-        return answer;
+        if(answer.equals("no")) return false;
+        return true;
     }
 
     private void switchCurrentPlayer() {
