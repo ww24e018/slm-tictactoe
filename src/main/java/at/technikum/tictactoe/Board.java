@@ -67,7 +67,7 @@ public class Board {
     }
 
     public void clear() {
-        this.cells = new char[3][3]; // assumed assumed to be "4" by spec I assume
+        this.cells = new char[3][3]; // assumed assumed to be "3" by spec I assume
     }
 
     public void print() {
@@ -121,9 +121,22 @@ public class Board {
             }
         }
 
-        // check diagonal
+        // check for 1st diagonal
         for(int i = 0; i < 3; i++){
             if(cells[i][i] == marker){
+                counter++;
+            }
+        }
+
+        if(counter == 3){
+            return true;
+        } else {
+            counter = 0;
+        }
+
+        // check for 2nd diagonal
+        for(int i = 0; i < 3; i++){
+            if(cells[i][2-i] == marker){
                 counter++;
             }
         }

@@ -117,11 +117,21 @@ class BoardTest {
     }
 
     @Test
-    void findWinnerInDiagonal(){
+    void findWinnerIn1stDiagonal(){
         Board board = new Board();
         board.place(0, 0, 'O');
         board.place(1, 1, 'O');
         board.place(2, 2, 'O');
+        assertTrue(board.isWinner('O'));
+    }
+
+    @Test
+    void findWinnerIn2ndDiagonal(){
+        Board board = new Board();
+        board.place(0, 2, 'O');
+        board.place(1, 1, 'O');
+        board.place(2, 0, 'O');
+        board.print();
         assertTrue(board.isWinner('O'));
     }
 
